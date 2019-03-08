@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->role()->where('id', config('setting.role_ad'))->exists();
     }
+
+    public function isRoleAdmin()
+    {
+        return $this->role()->where('id', config('setting.role_ad'))->exists();
+    }
 }
