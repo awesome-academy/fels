@@ -17,8 +17,12 @@ class TopicController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $topics = Topic::latest()->paginate(config('setting.topic.number_page'));
         return view('dashboard.topics.index', compact('topics'));
+=======
+        //
+>>>>>>> dd8a9fe... Create course admin
     }
 
     /**

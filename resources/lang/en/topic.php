@@ -5,6 +5,8 @@ return [
     'title' => 'Create a topic',
     'name' => 'Topic name',
     'picture' => 'Picture',
+    'title' => 'Create a topic',
+    'name' => 'Topic name',
     'description' => 'Description',
     'create' => 'Create Topic',
     'file_image' => 'File image',
