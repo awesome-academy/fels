@@ -25,14 +25,14 @@
                     @auth
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Html::image('/assets/admin/images/users/' . Auth::user()->avatar, Auth::user()->full_name, ['class' => 'profile-pic']) }}
+                                {{ Html::image(Auth::user()->provider_user_id ? Auth::user()->avatar : '/assets/home/images/users/' . Auth::user()->avatar, Auth::user()->full_name, ['class' => 'profile-pic']) }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
                                             <div class="u-img">
-                                                {{ Html::image('/assets/home/images/users/' . Auth::user()->avatar, Auth::user()->full_name) }}
+                                                {{ Html::image(Auth::user()->provider_user_id ? Auth::user()->avatar : '/assets/home/images/users/' . Auth::user()->avatar, Auth::user()->full_name) }}
 
                                             </div>
                                             <div class="u-text">

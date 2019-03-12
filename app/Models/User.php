@@ -22,7 +22,7 @@ class User extends Authenticatable
         'provider_user_id',
         'provider',
         'avatar',
-        'role_id'
+        'role_id',
     ];
 
     protected $hidden = [
@@ -58,5 +58,10 @@ class User extends Authenticatable
     public function isRoleAdmin()
     {
         return $this->role()->where('id', config('setting.role_ad'))->exists();
+    }
+
+    public function getAvatarAttribute($image)
+    {
+        return isset($image) ? $image : config('setting.avatar');
     }
 }

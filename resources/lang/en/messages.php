@@ -10,6 +10,7 @@ return [
     'login' => 'Login',
     'login_facebook' => 'Login with Facebook',
     'login_google' => 'Login with Google',
+    'login_github' => 'Login with Github',
     'email' => 'Email',
     'password' => 'Password',
     'remember_me' => 'Remember me',

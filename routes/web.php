@@ -25,6 +25,9 @@ Route::get('/', function () {
     return view('home');
 })->name('index');
 
+Route::get('/redirect/{social}', 'SocialLoginController@redirect');
+Route::get('/callback/{social}', 'SocialLoginController@callback');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
