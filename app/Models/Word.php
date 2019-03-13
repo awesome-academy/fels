@@ -14,7 +14,7 @@ class Word extends Model
     	'sound',
     	'translate',
         'user_id',
-        'word_id',
+        'lesson_id',
         'status',
     ];
 

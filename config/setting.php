@@ -6,9 +6,9 @@ return [
     'topic' => [
         'number_page' => 12,
     ],
-<<<<<<< HEAD
-=======
     'role_user' => 0,
     'avatar' => 'avatar.jpg',
->>>>>>> 9f1af18... Create login socialite
+    'word' => [
+		'number_page' => 10,
+	],
 ];

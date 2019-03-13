@@ -2,12 +2,6 @@
 
 return [
     'id' => 'ID',
-<<<<<<< HEAD
-    'title' => 'Create a topic',
-    'name' => 'Topic name',
-    'picture' => 'Picture',
-=======
->>>>>>> 9f1af18... Create login socialite
     'title' => 'Create a topic',
     'name' => 'Topic name',
     'picture' => 'Picture',

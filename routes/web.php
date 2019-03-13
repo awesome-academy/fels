@@ -27,6 +27,11 @@ Route::get('/', function () {
 
 Route::get('/redirect/{social}', 'SocialLoginController@redirect');
 Route::get('/callback/{social}', 'SocialLoginController@callback');
+Route::group([
+    'middleware' => ['auth'],
+], function () {
+    Route::resource('word', 'Home\WordListController');
+});
 
 Auth::routes();
 
