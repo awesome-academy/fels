@@ -6,6 +6,8 @@ return [
     'topic' => [
         'number_page' => 12,
     ],
+    'role_user' => 0,
+    'avatar' => 'avatar.jpg',
     'word' => [
 		'number_page' => 10,
 	],
