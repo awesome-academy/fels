@@ -39,6 +39,7 @@ return [
     'test_question' => 'Test Question',
     'results' => 'Results',
     'show_lessons' => 'Show Lesson',
+    'show_tests' => 'Show Test',
     'not_found_error' => 'Not Found!',
     'back' => 'Back to home',
     'try_find_home' => 'YOU SEEM TO BE TRYING TO FIND HIS WAY HOME',

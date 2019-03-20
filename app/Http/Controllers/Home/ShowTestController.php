@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Topic;
 use App\Models\Lesson;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
-class TopicController extends Controller
+use App\Models\Test;
+class ShowTestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics = Topic::withCount('lessons')->get();
-        return view('home', compact('topics'));
+        //
     }
 
     /**
@@ -48,16 +46,17 @@ class TopicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
         try {
-            $topic = Topic::where('slug', $slug)->firstOrFail();
-            $lessons = Lesson::where('topic_id', $topic->id)->get();
-
-            return view('topics.show', compact('lessons'));
+            $tests = Test::findOrFail($id);
+            $lessons = Lesson::where('lesson_id', $lesson->id)->get();
+            
+            return view('showtests.show', compact('tests'));
         } catch (ModelNotFoundException $e) {
             return view('errors.404');
         }
+        
     }
 
     /**
