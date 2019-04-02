@@ -30,4 +30,9 @@ return [
     'view' => 'View',
     'dear' => 'Dear',
     'all_notification' => 'See all Notification',
+    'change_password' => 'Change Password',
+    'old_password' => 'Current Password',
+    'confirm_password' => 'Confirm password',
+    'status_error' => 'Update password Failed!',
+    'status_success' => 'Update password successfully!',
 ];

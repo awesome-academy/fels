@@ -33,6 +33,7 @@ Route::group([
     Route::get('topic/search', 'Home\TopicController@search')->name('topic.search');
     Route::get('word/review', 'Home\WordListController@reviewWord')->name('word.review');
 
+    Route::post('password/change', 'Home\UserController@changePassword')->name('password.change');
     Route::group(['prefix' => 'user'], function () {
         Route::resource('/profile', 'Home\UserController');
         Route::get('/{id}/following', 'Home\UserController@following')->name('user.following');
