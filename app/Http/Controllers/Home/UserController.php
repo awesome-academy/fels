@@ -8,9 +8,19 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Notifications\FollowedUser;
+use App\Http\Requests\PasswordRequest;
+use Hash;
+use App\Repositories\UserRepository;
 
 class UserController extends Controller
 {
+    protected $user;
+
+    public function __construct(UserRepository $user)
+    {
+        $this->user = $user;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -190,5 +200,17 @@ class UserController extends Controller
         $results = $user->results()->get();
 
         return view('users.results', compact('results'));
+    }
+
+    public function changePassword(PasswordRequest $request)
+    {
+        if (!Hash::check($request->get('old_password'), Auth::user()->password))
+        {
+            return redirect()->back()->with('status', trans('profile.status_error'));
+        }
+
+        $this->user->changePassword(\Auth::user(), $request->get('password'));
+
+        return redirect()->back()->with('status', trans('profile.status_success'));
     }
 }

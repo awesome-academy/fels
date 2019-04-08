@@ -80,9 +80,9 @@
                                         <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i>@lang('messages.dashboard')</a></li>
                                     @endif
                                     <li><a id="logout"><i class="fa fa-power-off"></i>@lang('messages.logout')</a></li>
-                                    {!! Form::open(['method' => 'post', 'route' => 'logout', 'id' => 'logout-form']) !!}
+                                    {{ Form::open(['method' => 'post', 'route' => 'logout', 'id' => 'logout-form']) }}
 
-                                    {!! Form::close() !!}
+                                    {{ Form::close() }}
                                 </ul>
                             </div>
                         </li>

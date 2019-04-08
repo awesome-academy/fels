@@ -27,12 +27,12 @@
                 @if (Auth::check())
                     @if (Auth::id() != $user->id)
                         <a href="javascript:void(0)" id="follow-form" data-id="{{ $user->id }}" class="m-t-10 waves-effect waves-dark btn btn-{{ Auth::user()->isFollowing($user->id) ? 'primary' : 'danger' }} btn-md btn-rounded">
-                            {{ Auth::user()->isFollowing($user->id) ? trans('profile.following') : trans('profile.follow')}}
+                            {{ Auth::user()->isFollowing($user->id) ? trans('profile.following') : trans('profile.follow') }}
                         </a>
 
-                        {!! Form::open(['method' => 'post', 'route' => ['user.follow', $user->id], 'id' => 'follow']) !!}
+                        {{ Form::open(['method' => 'post', 'route' => ['user.follow', $user->id], 'id' => 'follow']) }}
 
-                        {!! Form::close() !!}
+                        {{ Form::close() }}
                     @endif
                 @endif
 
@@ -66,6 +66,7 @@
             <div class="card">
                 <ul class="nav nav-tabs profile-tab" role="tablist">
                     <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#settings" role="tab">@lang('profile.setting')</a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#change-password" role="tab">@lang('profile.change_password')</a> </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="settings" role="tabpanel">
@@ -77,53 +78,95 @@
 
                         @include('common.errors')
                         <div class="card-body">
-                            {!! Form::open(['route' => ['profile.update', $user->id], 'method' => 'PUT', 'class' => 'form-horizontal form-material']) !!}
+                            {{ Form::open(['route' => ['profile.update', $user->id], 'method' => 'PUT', 'class' => 'form-horizontal form-material']) }}
 
                                 <div class="form-group">
-                                    {!! Form::label('full_name', trans('profile.full_name', ['class' => 'col-md-12'])) !!}
+                                    {{ Form::label('full_name', trans('profile.full_name', ['class' => 'col-md-12'])) }}
 
                                     <div class="col-md-12">
-                                        {!! Form::text('full_name', $user->full_name, ['class' => 'form-control form-control-line']) !!}
-
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    {!! Form::label('email', trans('profile.email', ['class' => 'col-md-12'])) !!}
-
-                                    <div class="col-md-12">
-                                        {!! Form::text('email', $user->email, ['class' => 'form-control form-control-line', 'disabled' => 'disabled']) !!}
+                                        {{ Form::text('full_name', $user->full_name, ['class' => 'form-control form-control-line']) }}
 
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    {{ $user->gender }} awef
+                                    {{ Form::label('email', trans('profile.email', ['class' => 'col-md-12'])) }}
 
                                     <div class="col-md-12">
-                                        {!! Form::radio('gender', trans('profile.male'), $user->gender == trans('profile.male'), ['id' => config('setting.male')]) !!}
-                                        {!! Form::label(config('setting.male'), trans('profile.male')) !!}
+                                        {{ Form::text('email', $user->email, ['class' => 'form-control form-control-line', 'disabled' => 'disabled']) }}
 
-                                        {!! Form::radio('gender', trans('profile.female'), $user->gender == trans('profile.female'), ['id' => config('setting.female')]) !!}
-                                        {!! Form::label(config('setting.female'), trans('profile.female')) !!}
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    {!! Form::label('date_of_birthday', trans('profile.date_of_birthday', ['class' => 'col-2 col-form-label'])) !!}
+                                <div class="form-group">
 
-                                    <div class="col-12">
-                                        {!! Form::date('date_of_birthday', $user->date_of_birthday, ['class' => 'form-control form-control-line']) !!}
+                                    <div class="col-md-12">
+                                        {{ Form::radio('gender', trans('profile.male'), $user->gender == trans('profile.male'), ['id' => config('setting.male')]) }}
+                                        {{ Form::label(config('setting.male'), trans('profile.male')) }}
+
+                                        {{ Form::radio('gender', trans('profile.female'), $user->gender == trans('profile.female'), ['id' => config('setting.female')]) }}
+                                        {{ Form::label(config('setting.female'), trans('profile.female')) }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ Form::label('date_of_birthday', trans('profile.date_of_birthday', ['class' => 'col-md-12'])) }}
+
+                                    <div class="col-md-12">
+                                        {{ Form::date('date_of_birthday', $user->date_of_birthday, ['class' => 'form-control form-control-line']) }}
 
                                     </div>
 
                                 </div>
+
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        {{ Form::submit(trans('profile.update_profile'), ['class'=>'btn btn-success'])}}
+                                        {{ Form::submit(trans('profile.update_profile'), ['class'=>'btn btn-success']) }}
+
                                     </div>
                                 </div>
-                            {!! Form::close() !!}
+                            {{ Form::close() }}
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="change-password" role="tabpanel">
+                        <div class="card-body">
+                            {{ Form::open(['route' => ['password.change'], 'method' => 'POST', 'class' => 'form-horizontal form-material']) }}
+
+                                <div class="form-group">
+                                    {{ Form::label('old_password', trans('profile.old_password', ['class' => 'col-md-12'])) }}
+
+                                    <div class="col-md-12">
+                                        {{ Form::password('old_password', ['class' => ['form-control form-control-line'], 'required' => 'required', 'id' => 'password', 'autofocus' => 'autofocus']) }}
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ Form::label('password', trans('messages.password', ['class' => 'col-md-12'])) }}
+
+                                    <div class="col-md-12">
+                                        {{ Form::password('password', ['class' => ['form-control form-control-line'], 'required' => 'required', 'id' => 'password', 'autofocus' => 'autofocus']) }}
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ Form::label('password_confirmation', trans('profile.confirm_password', ['class' => 'col-md-12'])) }}
+
+                                    <div class="col-md-12">
+                                        {{ Form::password('password_confirmation', ['class' => ['form-control form-control-line'], 'required' => 'required', 'id' => 'password', 'autofocus' => 'autofocus']) }}
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        {{ Form::submit(trans('profile.change_password'), ['class'=>'btn btn-success']) }}
+
+                                    </div>
+                                </div>
+                            {{ Form::close() }}
                         </div>
                     </div>
                 </div>
