@@ -9,12 +9,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <button class="btn btn-primary">@lang('word.learn_word')</button>
-                    <select class="custom-select pull-right">
-                        <option selected="0">@lang('word.filter_word')</option>
-                        <option value="1">@lang('word.learned')</option>
-                        <option value="2">@lang('word.unlearned')</option>
-                    </select>
+                    {{ Form::select('status', ['all' => trans('word.all'), '1' => trans('word.learned'), '0' => trans('word.unlearned')], null, ['class'=>'custom-select pull-right', 'placeholder'=> trans('word.filter_word')]) }}
+
                     <div class="table-reponsive m-t-20">
                         <table class="table stylish-table">
                             <thead>
@@ -26,7 +22,7 @@
                                     <th>@lang('word.status')</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="ajax-word">
                                 @forelse ($words as $key => $word)
                                     <tr>
                                         <td class="word"><span class="round">{{ ($key + 1) }}</span></td>
@@ -53,3 +49,8 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    {{ Html::script(asset('/js/filterWord.js')) }}
++@endsection
+

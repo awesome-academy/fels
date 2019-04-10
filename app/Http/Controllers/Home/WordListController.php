@@ -4,16 +4,22 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Word;
-use App\Models\User;
 use Auth;
 use DB;
 use Carbon\Carbon;
 use Exception;
 use App\Models\Lesson;
+use App\Repositories\WordRepository;
 
 class WordListController extends Controller
 {
+    protected $word;
+
+    public function __construct(WordRepository $word)
+    {
+        $this->word = $word;
+    }
+
 	public function show($id)
     {
         $lesson = Lesson::whereId($id)->first();
@@ -61,9 +67,24 @@ class WordListController extends Controller
 
     public function reviewWord()
     {
-        $user = Auth::user();
-        $words = $user->words()->latest()->paginate(config('setting.word.number_page'));
+        $words = $this->word->wordFilter(config('setting.word.number_page'));
 
         return view('words.review', compact('words'));
     }
+
+    public function filterWord($status)
+    {
+        if(\Request::ajax())
+        {
+            $words = $this->word->wordFilter(config('setting.word.number_page'));
+
+            if ($status != 'all') {
+                $words = $this->word->wordFilterWhere(config('setting.word.number_page'), $status);
+            }
+            $data = \View::make('widgets.word', ['words' => $words])->render();
+
+            return \response()->json(['data' => $data]);
+        }
+    }
+
 }

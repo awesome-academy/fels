@@ -17,5 +17,6 @@ mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/follow.js', 'public/js')
    .js('resources/js/word.js', 'public/js')
    .js('resources/js/statisHandle.js', 'public/js')
+   .js('resources/js/filterWord.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
 mix.copyDirectory('resources/assets', 'public/assets');
