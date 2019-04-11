@@ -26,3 +26,9 @@ img.card-img-left {
 .unread-notification {
     background: #f2f4f8;
 }
+
+#chart{
+    min-width: 310px; 
+    height: 250px; 
+    margin: 0 auto;
+}

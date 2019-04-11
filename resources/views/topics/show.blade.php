@@ -10,7 +10,7 @@
                 <div class="d-flex">
                     <div class="p-2">
                         <span class="round">
-                            {{ Html::image('uploads/lessons/' . $lesson->picture, $lesson->lesson_name) }}
+                            {{ Html::image('uploads/lessons/' . $lesson->picture, $lesson->lesson_name, ['class' => 'card-img-left']) }}
 
                         </span>
                     </div>

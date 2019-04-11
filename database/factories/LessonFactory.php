@@ -8,7 +8,7 @@ $factory->define(Lesson::class, function (Faker $faker) {
 
     return [
         'lesson_name' => $faker->sentence,
-        'picture' => '//placehold.it/200',
+        'picture' => 'default.jpg',
         'description' => $faker->paragraph,
         'topic_id' => $faker->randomElement($topics),
     ];

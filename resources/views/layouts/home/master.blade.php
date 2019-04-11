@@ -9,7 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    {{ Html::style(asset('//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css')) }}
+    {{ Html::script(asset('//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js')) }}
+    {{ Html::script(asset('//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js')) }}
+    {{ Html::script(asset('//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js')) }}
     <title>@yield('title')</title>
 
     @include('particals.home.styles')

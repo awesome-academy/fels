@@ -62,4 +62,9 @@ return [
     'thanks' => 'Thanks',
     'test_sent_user' => 'Test sent to All Users',
     'suggest_test' => 'Every Friday, you will make to do a test',
+    'statis' => 'Statistical',
+    'sum_word_in_month' => 'Sum Word In Month',
+    'sum_word_in_year' => 'Sum Word In Year',
+    'view_value_current_month' => 'View Value Current Month',
+    'view_value_current_year' => 'View Value Current Year',
 ];

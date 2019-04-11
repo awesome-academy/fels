@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="card-title"><a href="{{ route('topics.show', $topic->slug) }}">{{ $topic->topic_name}}</a></h4>
+                        <h4 class="card-title"><a href="{{ route('topics.show', $topic->slug) }}">{{ $topic->topic_name }}</a></h4>
                         <p class="card-text">
                             {{ $topic->description }}
                         </p>
