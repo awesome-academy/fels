@@ -51,7 +51,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>@lang('profile.all_notification')</strong> <i class="fa fa-angle-right"></i> </a>
+                                        <a class="nav-link text-center" href="{{ route('user.notification') }}"> <strong>@lang('profile.all_notification')</strong> <i class="fa fa-angle-right"></i> </a>
                                     </li>
                                 </ul>
                             </div>

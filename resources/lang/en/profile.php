@@ -30,4 +30,5 @@ return [
     'view' => 'View',
     'dear' => 'Dear',
     'all_notification' => 'See all Notification',
+    'new_notification' => 'New Notification',
 ];

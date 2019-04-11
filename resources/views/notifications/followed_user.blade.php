@@ -1,5 +1,5 @@
 @foreach (Auth::user()->notifications as $notification)
-<a href="{{ route('profile.show', $notification->data['id']) }}" class="{{ $notification->markAsRead() ? 'unread-notification' : ''}}">
+<a href="{{ route('profile.show', $notification->data['id']) }}" class="{{ empty($notification->read_at) ? 'unread-notification' : '' }}">
     <div class="user-img">
         {{ Html::image($notification->data['avatar'], $notification->data['full_name'], ['class' => 'img-circle']) }}
 
