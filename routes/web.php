@@ -44,6 +44,8 @@ Route::group([
         Route::get('/{id}/follower', 'Home\UserController@followers')->name('user.followers');
         Route::get('/{id}/results', 'Home\UserController@results')->name('user.results');
         Route::post('/follow', 'Home\UserController@doFollow')->name('user.follow');
+        Route::get('/notification', 'Home\UserController@showNotification')->name('user.notification');
+        Route::post('/notification', 'Home\UserController@markAsRead')->name('user.markread');
     });
 });
 

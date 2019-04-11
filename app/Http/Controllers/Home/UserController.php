@@ -197,4 +197,26 @@ class UserController extends Controller
 
         return view('users.results', compact('results'));
     }
+
+    public function showNotification()
+    {
+        if (!\Auth::id()) {
+            return view('errors.404');
+        }
+        $user = $this->user->findBy('id', \Auth::id());
+
+        return view('users.notifications', compact('user'));
+    }
+
+    public function markAsRead()
+    {
+        if (!\Auth::id()) {
+            return view('errors.404');
+        }
+        $user = $this->user->findBy('id', \Auth::id());
+        $user->unreadNotifications->markAsRead();
+
+        return redirect()->back();
+    }
+
 }
