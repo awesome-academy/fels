@@ -38,6 +38,7 @@ Route::group([
     Route::get('/statis/{id}', [
         'uses' => 'Home\StatisticalController@chart',
     ]);
+    Route::get('word/review/{status}', 'Home\WordListController@filterWord')->name('word.filter');
     Route::group(['prefix' => 'user'], function () {
         Route::resource('/profile', 'Home\UserController');
         Route::get('/{id}/following', 'Home\UserController@following')->name('user.following');

@@ -15,4 +15,5 @@ return [
     'unlearned' => 'Unlearned',
     'learned' => 'Learned',
     'title' => 'Practising little and often is the best way to improve your vocabulary, so come back tomorrow to choose another topic to work on. Good luck!',
+    'all' => 'All word',
 ];
