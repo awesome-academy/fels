@@ -4,19 +4,14 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Repositories\TopicRepository;
 use App\Repositories\LessonRepository;
 
-class TopicController extends Controller
+class LessonController extends Controller
 {
-    protected $topic;
-
     protected $lesson;
 
-    public function __construct(TopicRepository $topic, LessonRepository $lesson)
+    public function __construct(LessonRepository $lesson)
     {
-        $this->topic = $topic;
         $this->lesson = $lesson;
     }
 
@@ -27,8 +22,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics = $this->topic->withCount('lessons');
-        return view('topics.index', compact('topics'));
+        //
     }
 
     /**
@@ -55,19 +49,15 @@ class TopicController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        try {
-            $topic = $this->topic->findBy('slug', $slug);
-            $lessons = $this->lesson->findWhere('topic_id', $topic->id);
+        $lesson = $this->lesson->getById($id);
 
-            return view('topics.show', compact('lessons', 'topic'));
-        } catch (ModelNotFoundException $e) {
-            return view('errors.404');
-        }
+        return view('lessons.show', compact('lesson'));
+
     }
 
     /**
@@ -102,13 +92,5 @@ class TopicController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function search(Request $request)
-    {
-        $search = trim($request->input('search'));
-        $topics = $this->topic->search(['topic_name', 'description'], $search);
-
-        return view('search', compact('topics'));
     }
 }
