@@ -14,6 +14,7 @@
                         {{ Form::hidden('test_id', $test->id) }}
                         <div class="row d-flex flex-row-reverse">
                             <div class="col-md-6 fixed">
+                                {{ Form::hidden("time", $test->time, ['id' => 'time']) }}
                                 <div class="alert alert-info" id="timer">
                                     <span class="minutes"></span> : <span class="seconds"></span>
                                 </div>

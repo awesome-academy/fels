@@ -28,4 +28,10 @@ class Test extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    public function getTimeAttribute()
+    {
+        return \Carbon\Carbon::createFromFormat('H:i:s', $this->attributes['time'])->format('i');
+    }
+
 }

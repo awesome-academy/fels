@@ -14,7 +14,7 @@
             <p class="card-text">
                 @lang('test.finish_time'): {{ $result->finish_time }}
             </p>
-            <a href="{{ route('showtests.show', $result->id) }}" class="btn btn-info">@lang('test.test_again')</a>
+            <a href="{{ route('showtests.show', $result->test->id) }}" class="btn btn-info">@lang('test.test_again')</a>
         </div>
     </div>
 @endsection

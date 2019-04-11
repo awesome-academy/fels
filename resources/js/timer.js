@@ -31,7 +31,8 @@ $(document).ready(function() {
         let timeinterval = setInterval(updateTime, 1000);
     }
 
-    let deadline = new Date(Date.parse(new Date()) + 10 * 1000);
+    let time = $('#time').val();
+    let deadline = new Date(Date.parse(new Date()) + 60 *time * 1000);
     if (!window.localStorage.getItem('timer')) {
         window.localStorage.setItem('timer', deadline);
     }
